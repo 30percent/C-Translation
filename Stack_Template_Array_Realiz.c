@@ -3,14 +3,6 @@
 #include "array.h"
 
 /**
-* Creates a Facility of Stack_Template setting concept parameters (Max_Depth).
-*/
-void Stack_Template_Fac_Init(Stack_Template_Fac** S, r_type_ptr I){
-	*S = malloc(sizeof(Stack_Template_Fac));
-	(*S)->Max_Depth = I;
-}
-
-/**
 * Initializes contents of Stack at S->ptr.
 * Called from r_type_init *only*
 */
@@ -24,6 +16,12 @@ void Stack_Template_Array_Realiz_Init(r_type* S){
 	proc_init(&tempArrayProcStruct, Array_Init, Array_Final, tempArrayFac, S->proc->subset);
 	r_type_init(&((tempStack)->Cont), tempArrayProcStruct);
 	r_type_init(&((tempStack)->top), stdIntProc);
+
+	Stack_Template_Fac *myFac = (Stack_Template_Fac*)S->proc->facStruct;
+    myFac->Push = Stack_Template_Array_Realiz_Push;
+    myFac->Pop = Stack_Template_Array_Realiz_Pop;
+
+
 }
 
 /**

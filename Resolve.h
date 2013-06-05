@@ -13,7 +13,7 @@ typedef struct r_type r_type;
 
 /**
 * Struct stores init and final procedures, it's Facility Structure
-* as well as pointer to struct of it's 'generic'.
+* as well as pointer to struct of its 'generic'.
 */
 
 struct proc_struct{
